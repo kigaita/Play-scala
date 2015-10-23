@@ -1,0 +1,5 @@
+# Messages
+
+users.list.title={0,choice,0#No users|1#One user|1<{0,number,integer} users} found
+stories.list.title={0,choice,0#No stories|1#One story|1<{0,number,integer} stories} found
+news.list.title={0,choice,0#No news |1#One news Item |1<{0,number,integer} news items} found

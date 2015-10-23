@@ -1,0 +1,36 @@
+@(id: Long, newsForm: Form[NewsFormData],user: Option[User])(implicit flash: play.api.mvc.Flash, messages: Messages)
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
+
+@templates.auth(user) {
+     <div class="row">
+	<div class="col-lg-12">
+	<div class="panel panel-default">
+     <div class="panel-heading">Edit News Item</div>
+     <div class="panel-body">
+    
+    @form(routes.NewsController.update(id),'class -> "form-horizontal") {
+        
+          @inputText(newsForm("title"), '_label -> "Item Title", '_help -> "", 'class -> "form-control")
+            @textarea(newsForm("text"), '_label -> "News", '_help -> "", 'class -> "form-control")
+            @inputText(newsForm("keywords"), '_label -> "Item Keywords", '_help -> "", 'class -> "form-control")
+            @inputText(newsForm("status"), '_label -> "Status", '_help -> "", 'class -> "form-control")
+            @inputText(newsForm("newsCategoryId"), '_label -> "Category", '_help -> "", 'class -> "form-control")
+            @inputText(newsForm("ratingId"), '_label -> "Rating", '_help -> "", 'class -> "form-control")
+            
+
+        
+        <div class="actions top-buffer">
+            <input type="submit" value="Save this News Item" class="btn btn-primary">  
+            <a href="@routes.NewsController.list()" class="btn btn-default">Cancel</a> 
+        </div>
+         </div>
+          </div> 
+          </div>  
+        </div>   
+        
+    }
+    
+}

@@ -1,0 +1,71 @@
+# Routes
+# This file defines all AdminController routes (Higher priority routes first)
+# ~~~~
+#
+
+##########################################################################
+###### public pages
+##########################################################################
+# Home page
+GET     /                           				controllers.UserController.index
+
+
+##########################################################################
+###### User pages
+##########################################################################
+###### User Authentication
+
+GET     /login                              controllers.UserController.login
+POST    /login                              controllers.UserController.authenticate
+GET     /logout                             controllers.UserController.logout
+###### profile page
+GET     /profile                           				controllers.UserController.profile
+# users list (look at the default values for pagination parameters)
+GET     /users                  controllers.UserController.list(p:Int ?= 0, s:Int ?= 2, f ?= "")
+# Add user
+GET     /users/new              controllers.UserController.create
+# list users
+POST    /users                  controllers.UserController.save
+# Edit existing user
+GET     /users/:id              controllers.UserController.edit(id:Long)
+POST    /users/:id              controllers.UserController.update(id:Long)
+# Delete a user
+POST    /users/:id/delete       controllers.UserController.delete(id:Long)
+
+
+##########################################################################
+###### Story pages
+##########################################################################
+
+# story list (look at the default values for pagination parameters)
+GET     /stories                  controllers.StoryController.list(p:Int ?= 0, s:Int ?= 2, f ?= "")
+# Add story
+GET     /story/new              controllers.StoryController.create
+# save stories
+POST    /story                  controllers.StoryController.save
+# Edit existing story
+GET     /story/:id              controllers.StoryController.edit(id:Long)
+POST    /story/:id              controllers.StoryController.update(id:Long)
+# Delete a story
+POST    /story/:id/delete       controllers.StoryController.delete(id:Long)
+
+
+##########################################################################
+###### News pages
+##########################################################################
+
+# news Item list (look at the default values for pagination parameters)
+GET     /news                  controllers.NewsController.list(p:Int ?= 0, s:Int ?= 2, f ?= "")
+# Add news Item
+GET     /newsItem/new              controllers.NewsController.create
+# save news Item
+POST    /newsItem                  controllers.NewsController.save
+# Edit existing news Item
+GET     /newsItem/:id              controllers.NewsController.edit(id:Long)
+POST    /newsItem/:id              controllers.NewsController.update(id:Long)
+# Delete a news Item
+POST    /newsItem/:id/delete       controllers.NewsController.delete(id:Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file           controllers.Assets.at(path="/public", file)
+GET     /webjars/*file                    controllers.WebJarAssets.at(file)

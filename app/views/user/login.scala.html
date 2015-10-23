@@ -1,0 +1,40 @@
+@(loginForm: Form[(String,String)])(implicit flash: play.api.mvc.Flash, messages: Messages)
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) } 
+
+@templates.main(None) {
+	<div class="row">
+	<div class="col-lg-8 col-md-offset-2">
+	<div class="panel panel-default">
+         <div class="panel-heading">Sign in</div>
+          <div class="panel-body">
+        
+        @helper.form(routes.UserController.authenticate,'class -> "form-horizontal") {
+        	 @loginForm.globalError.map { error =>
+		      <p class="error">
+		        @error.message
+		      </p>
+		    }
+		
+		    @flash.get("success").map { message =>
+		      <p class="success">
+		        @message
+		      </p>
+		    }
+         
+        
+            @inputText(loginForm("email"), '_label -> "Email", '_help -> "", 'class -> "form-control")
+            @inputText(loginForm("password"), '_label -> "Password", '_help -> "" , 'class -> "form-control")
+			<br />
+        <div class="actions">
+            <input type="submit" value="Login" class="btn btn-primary"> 
+        </div>
+         </div>
+          </div> 
+          </div>  
+        </div>    
+        }
+        
+       }

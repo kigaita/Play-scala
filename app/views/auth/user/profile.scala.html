@@ -1,0 +1,31 @@
+@(user: Option[User])(implicit flash: play.api.mvc.Flash, messages: Messages)
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) } 
+
+@templates.auth(user) {
+    <div class="row">
+	<div class="col-lg-12">
+	<div class="panel panel-default">
+     <div class="panel-heading">My Profile</div>
+     <div class="panel-body">
+     
+	<dl class="dl-horizontal">
+					<dt>Full Name</dt>
+					<dd>@user.get.firstName.</dd>
+					<dt>Email</dt>
+					<dd>@user.get.email</dd>
+					<dt>Role</dt>
+					<dd>@user.get.permission</dd>
+				</dl>
+   
+        <div class="actions top-buffer"> 
+            <a href="@routes.UserController.edit(user.get.id)" class="btn btn-primary">Edit</a> 
+        </div>
+         </div>
+          </div> 
+          </div>  
+        </div>   
+  
+}

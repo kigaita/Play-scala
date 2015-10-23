@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/kenyapatches -Dhttp.port=5432 -DapplyEvolutions.default=false -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=postgres://avwvsdqabslchl:7BOCMokNSCT93a4mvqgB7d_MqH@ec2-107-21-219-142.compute-1.amazonaws.com:5432/d78sm91tfk9crs -Ddb.default.password=7BOCMokNSCT93a4mvqgB7d_MqH -Ddb.default.username=avwvsdqabslchl

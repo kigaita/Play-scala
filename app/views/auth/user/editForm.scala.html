@@ -1,0 +1,33 @@
+@(id: Long, userForm: Form[SignupData],user: Option[User])(implicit flash: play.api.mvc.Flash, messages: Messages)
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) }
+
+@templates.auth(user) {
+     <div class="row">
+	<div class="col-lg-12">
+	<div class="panel panel-default">
+     <div class="panel-heading">Edit user</div>
+     <div class="panel-body">
+    
+    @form(routes.UserController.update(id),'class -> "form-horizontal") {
+        
+             @inputText(userForm("email"), '_label -> "Email", '_help -> "", 'class -> "form-control")
+            @inputText(userForm("password"), '_label -> "Password", '_help -> "", 'class -> "form-control")
+            @inputText(userForm("passwordRepeat"), '_label -> "Repeat Password", '_help -> "", 'class -> "form-control")
+            @inputText(userForm("fullname"), '_label -> "Fullname", '_help -> "", 'class -> "form-control")
+            
+        
+        <div class="actions top-buffer">
+            <input type="submit" value="Save this user" class="btn btn-primary">  
+            <a href="@routes.UserController.list()" class="btn btn-default">Cancel</a> 
+        </div>
+         </div>
+          </div> 
+          </div>  
+        </div>   
+        
+    }
+    
+}

@@ -1,0 +1,34 @@
+@(storyForm: Form[StoryFormData], user: Option[User])(implicit flash: play.api.mvc.Flash, messages: Messages)
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.f) } 
+
+@templates.auth(user) {
+    <div class="row">
+	<div class="col-lg-12">
+	<div class="panel panel-default">
+     <div class="panel-heading">Add a Story</div>
+     <div class="panel-body">
+    @form(routes.StoryController.save(),'class -> "form-horizontal") {
+       
+            @inputText(storyForm("title"), '_label -> "Story Title", '_help -> "", 'class -> "form-control")
+            @textarea(storyForm("text"), '_label -> "Story", '_help -> "", 'class -> "form-control")
+            @inputText(storyForm("keywords"), '_label -> "Story Keywords", '_help -> "", 'class -> "form-control")
+            @inputText(storyForm("status"), '_label -> "Status", '_help -> "", 'class -> "form-control")
+            @inputText(storyForm("storyCategoryId"), '_label -> "Category", '_help -> "", 'class -> "form-control")
+            @inputText(storyForm("ratingId"), '_label -> "Rating", '_help -> "", 'class -> "form-control")
+            
+
+        <div class="actions top-buffer">
+            <input type="submit" value="Create this story" class="btn btn-primary">  
+            <a href="@routes.StoryController.list()" class="btn btn-default">Cancel</a> 
+        </div>
+         </div>
+          </div> 
+          </div>  
+        </div>   
+        
+    }
+    
+}
